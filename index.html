@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shtrakalka</title>
+    </head>
+    
+    <body>
+        <p>Number of Shots:</p>
+        <input type="text" name="shots" id="shots" value="100"><br>
+        <p>Interval:</p>
+        <input type="text" name="interval" id="interval" value="10"><br>
+
+        <br><br><button id="start_button">Start</button>
+        <button id="stop_button">Stop</button>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            $('#start_button').click(function(e) {
+                e.preventDefault();
+                shots = $('#shots').val();
+                interval = $('#interval').val();
+
+                $.get('/start?shots=' + shots + '&interval=' + interval, (data) => {
+                   console.log(data); 
+                })
+            });
+
+            $('#stop_button').click(function (e) {
+                e.preventDefault();
+
+                $.get('/stop', (data) => {
+                    console.log(data);
+                })
+            });
+        </script>
+    </body>
+</html>

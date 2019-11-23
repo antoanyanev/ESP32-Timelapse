@@ -67,6 +67,10 @@ void setup() {
   display.setTextSize(1);
   display.setCursor(0,0);
   display.println("Not connected");
+  display.print("SSID: ");
+  display.println(ssid);
+  display.print("Password: ");
+  display.print(password);
   display.display();
 
   WiFi.begin(ssid, password);
